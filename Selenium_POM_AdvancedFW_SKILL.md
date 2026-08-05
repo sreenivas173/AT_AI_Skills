@@ -204,10 +204,7 @@ public class DriverManager {
 The simplest POM pattern where each page class owns its locators and uses `driver.findElement()` directly.
 
 ```java
-package com.thetestingacademy.pages.pageObjectModel.normal_POM.normal_POM.vwo;
 
-import com.thetestingacademy.utils.PropertiesReader;
-import com.thetestingacademy.utils.WaitHelpers;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -247,10 +244,7 @@ public class LoginPage {
 Extends `CommonToAllPage` to reuse common actions like `clickElement()`, `enterInput()`, `getText()`. Eliminates repeated `driver.findElement()` calls.
 
 ```java
-package com.thetestingacademy.pages.pageObjectModel.normal_POM.imporved_POM.vwo;
 
-import com.thetestingacademy.base.CommonToAllPage;
-import com.thetestingacademy.utils.WaitHelpers;
 import org.openqa.selenium.By;
 
 public class LoginPage extends CommonToAllPage {
@@ -275,10 +269,7 @@ public class LoginPage extends CommonToAllPage {
 Uses Selenium's `@FindBy` annotations for declarative element location. Elements are automatically initialized via `PageFactory.initElements()`.
 
 ```java
-package com.thetestingacademy.pages.pageFactory.vwo;
 
-import com.thetestingacademy.base.CommonToAllPage;
-import com.thetestingacademy.utils.PropertiesReader;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -314,10 +305,7 @@ public class LoginPage_PF extends CommonToAllPage {
 ## CommonToAllPage -- Base Page Object
 
 ```java
-package com.thetestingacademy.base;
 
-import com.thetestingacademy.driver.DriverManager;
-import com.thetestingacademy.utils.PropertiesReader;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -365,9 +353,7 @@ public class CommonToAllPage {
 ## CommonToAllTest -- Base Test Class
 
 ```java
-package com.thetestingacademy.base;
 
-import com.thetestingacademy.driver.DriverManager;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
