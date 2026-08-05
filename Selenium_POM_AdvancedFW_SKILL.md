@@ -3,12 +3,13 @@ name: Selenium Advanced POM Framework
 description: Advanced Selenium WebDriver framework with three Page Object Model patterns (Basic POM, Improved POM, Page Factory), retry mechanisms, Allure reporting, Excel data-driven testing, and Selenoid grid support.
 version: 1.0.0
 author: Srinivasa
+license: MIT
 testingTypes: [e2e]
 frameworks: [selenium]
 languages: [java]
 domains: [web]
 agents: [claude-code, cursor, github-copilot, windsurf, codex, aider, continue, cline, zed, bolt]
-githubUrl: https://github.com/sreenivas173
+githubUrl: https://github.com/s
 ---
 
 # Selenium Advanced POM Framework Skill
@@ -30,7 +31,7 @@ You are an expert QA automation engineer specializing in advanced Selenium WebDr
 
 ```
 src/
-  main/java/com/testsite/
+  main/java/com/SrinivasaTestFW/
     base/
       CommonToAllPage.java            # Base class for all page objects
     driver/
@@ -55,7 +56,7 @@ src/
   main/resources/
     data.properties                   # Test configuration & credentials
     log4j2.xml                        # Logging configuration
-  test/java/com/thetestingacademy/
+  test/java/com/SrinivasaTestFW/
     base/
       CommonToAllTest.java            # Base test class (setUp/tearDown)
     listeners/
@@ -151,7 +152,7 @@ pom.xml
 ## Driver Management
 
 ```java
-package com.thetestingacademy.driver;
+package com.SrinivasaTestFW.driver;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -204,7 +205,10 @@ public class DriverManager {
 The simplest POM pattern where each page class owns its locators and uses `driver.findElement()` directly.
 
 ```java
+package com.SrinivasaTestFW.pages.pageObjectModel.normal_POM.normal_POM.vwo;
 
+import com.SrinivasaTestFW.utils.PropertiesReader;
+import com.SrinivasaTestFW.utils.WaitHelpers;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -244,7 +248,10 @@ public class LoginPage {
 Extends `CommonToAllPage` to reuse common actions like `clickElement()`, `enterInput()`, `getText()`. Eliminates repeated `driver.findElement()` calls.
 
 ```java
+package com.SrinivasaTestFW.pages.pageObjectModel.normal_POM.imporved_POM.vwo;
 
+import com.SrinivasaTestFW.base.CommonToAllPage;
+import com.SrinivasaTestFW.utils.WaitHelpers;
 import org.openqa.selenium.By;
 
 public class LoginPage extends CommonToAllPage {
@@ -269,7 +276,10 @@ public class LoginPage extends CommonToAllPage {
 Uses Selenium's `@FindBy` annotations for declarative element location. Elements are automatically initialized via `PageFactory.initElements()`.
 
 ```java
+package com.SrinivasaTestFW.pages.pageFactory.vwo;
 
+import com.SrinivasaTestFW.base.CommonToAllPage;
+import com.SrinivasaTestFW.utils.PropertiesReader;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -305,7 +315,10 @@ public class LoginPage_PF extends CommonToAllPage {
 ## CommonToAllPage -- Base Page Object
 
 ```java
+package com.SrinivasaTestFW.base;
 
+import com.SrinivasaTestFW.driver.DriverManager;
+import com.SrinivasaTestFW.utils.PropertiesReader;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -353,7 +366,9 @@ public class CommonToAllPage {
 ## CommonToAllTest -- Base Test Class
 
 ```java
+package com.SrinivasaTestFW.base;
 
+import com.SrinivasaTestFW.driver.DriverManager;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
@@ -384,7 +399,7 @@ public class CommonToAllTest {
 ## Wait Helpers
 
 ```java
-package com.thetestingacademy.utils;
+package com.SrinivasaTestFW.utils;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
@@ -452,7 +467,7 @@ public class WaitHelpers {
 ## Properties Reader
 
 ```java
-package com.thetestingacademy.utils;
+package com.SrinivasaTestFW.utils;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -497,12 +512,12 @@ expected_username=Test User
 ## Writing Tests -- Basic POM Test
 
 ```java
-package com.thetestingacademy.tests.pageObjectModelTests.vwo;
+package com.SrinivasaTestFW.tests.pageObjectModelTests.vwo;
 
-import com.thetestingacademy.base.CommonToAllTest;
-import com.thetestingacademy.pages.pageObjectModel.normal_POM.normal_POM.vwo.DashBoardPage;
-import com.thetestingacademy.pages.pageObjectModel.normal_POM.normal_POM.vwo.LoginPage;
-import com.thetestingacademy.utils.PropertiesReader;
+import com.SrinivasaTestFW.base.CommonToAllTest;
+import com.SrinivasaTestFW.pages.pageObjectModel.normal_POM.normal_POM.vwo.DashBoardPage;
+import com.SrinivasaTestFW.pages.pageObjectModel.normal_POM.normal_POM.vwo.LoginPage;
+import com.SrinivasaTestFW.utils.PropertiesReader;
 import io.qameta.allure.Description;
 import io.qameta.allure.Owner;
 import org.testng.Assert;
@@ -544,11 +559,11 @@ public class TestVWOLogin_01_NormalScript_POM extends CommonToAllTest {
 ## Writing Tests -- Page Factory Test
 
 ```java
-package com.thetestingacademy.tests.pageFactoryTests.vwo;
+package com.SrinivasaTestFW.tests.pageFactoryTests.vwo;
 
-import com.thetestingacademy.base.CommonToAllTest;
-import com.thetestingacademy.pages.pageFactory.vwo.LoginPage_PF;
-import com.thetestingacademy.utils.PropertiesReader;
+import com.SrinivasaTestFW.base.CommonToAllTest;
+import com.SrinivasaTestFW.pages.pageFactory.vwo.LoginPage_PF;
+import com.SrinivasaTestFW.utils.PropertiesReader;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -568,7 +583,7 @@ public class TestVWOLogin_PF extends CommonToAllTest {
 ## Data-Driven Testing with Excel
 
 ```java
-package com.thetestingacademy.utilexcel;
+package com.SrinivasaTestFW.utilexcel;
 
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -640,7 +655,7 @@ public void testDataDrivenLogin(String email, String password, String expectedRe
 ### RetryAnalyzer
 
 ```java
-package com.thetestingacademy.listeners;
+package com.SrinivasaTestFW.listeners;
 
 import org.testng.IRetryAnalyzer;
 import org.testng.ITestResult;
@@ -663,7 +678,7 @@ public class RetryAnalyzer implements IRetryAnalyzer {
 ### RetryListener (Global Retry)
 
 ```java
-package com.thetestingacademy.listeners;
+package com.SrinivasaTestFW.listeners;
 
 import org.testng.IAnnotationTransformer;
 import org.testng.annotations.ITestAnnotation;
@@ -683,9 +698,9 @@ public class RetryListener implements IAnnotationTransformer {
 ## Screenshot Listener with Allure
 
 ```java
-package com.thetestingacademy.listeners;
+package com.SrinivasaTestFW.listeners;
 
-import com.thetestingacademy.driver.DriverManager;
+import com.SrinivasaTestFW.driver.DriverManager;
 import io.qameta.allure.Allure;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
@@ -744,7 +759,7 @@ public class ScreenshotListener implements ITestListener {
 <suite name="VWO Basic Suite">
     <test verbose="2" preserve-order="true" name="BasicPOMTests">
         <classes>
-            <class name="com.thetestingacademy.tests.pageObjectModelTests.vwo.TestVWOLogin_01_NormalScript_POM"/>
+            <class name="com.SrinivasaTestFW.tests.pageObjectModelTests.vwo.TestVWOLogin_01_NormalScript_POM"/>
         </classes>
     </test>
 </suite>
@@ -757,12 +772,12 @@ public class ScreenshotListener implements ITestListener {
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Retry Suite">
     <listeners>
-        <listener class-name="com.thetestingacademy.listeners.RetryListener"/>
-        <listener class-name="com.thetestingacademy.listeners.ScreenshotListener"/>
+        <listener class-name="com.SrinivasaTestFW.listeners.RetryListener"/>
+        <listener class-name="com.SrinivasaTestFW.listeners.ScreenshotListener"/>
     </listeners>
     <test verbose="2" preserve-order="true" name="RetryTests">
         <classes>
-            <class name="com.thetestingacademy.tests.pageObjectModelTests.vwo.TestVWOLogin_03_Retry"/>
+            <class name="com.SrinivasaTestFW.tests.pageObjectModelTests.vwo.TestVWOLogin_03_Retry"/>
         </classes>
     </test>
 </suite>
@@ -783,8 +798,8 @@ public class ScreenshotListener implements ITestListener {
             </run>
         </groups>
         <classes>
-            <class name="com.thetestingacademy.tests.pageObjectModelTests.vwo.TestVWOLogin_01_NormalScript_POM"/>
-            <class name="com.thetestingacademy.tests.pageFactoryTests.vwo.TestVWOLogin_PF"/>
+            <class name="com.SrinivasaTestFW.tests.pageObjectModelTests.vwo.TestVWOLogin_01_NormalScript_POM"/>
+            <class name="com.SrinivasaTestFW.tests.pageFactoryTests.vwo.TestVWOLogin_PF"/>
         </classes>
     </test>
 </suite>
