@@ -10,7 +10,6 @@ Test data
 User input
 
 
-
 STRICT RULES (MANDATORY)
 DO NOT invent features, APIs, error codes, UI elements, or behavior.
 DO NOT assume default or "typical" system behavior.
